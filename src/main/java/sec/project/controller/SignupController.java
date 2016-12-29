@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import sec.project.domain.Signup;
+import org.springframework.ui.Model;
 import sec.project.repository.SignupRepository;
 
 @Controller
@@ -20,7 +21,8 @@ public class SignupController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
-    public String loadForm() {
+    public String loadForm(Model model) {
+        model.addAttribute("signups", signupRepository.findAll());
         return "form";
     }
 
