@@ -1,0 +1,7 @@
+medical data storing app
+
+xss - public forum
+injection - login area
+session management - set username and voila
+idor - messages
+security misconfiguration and csrf - http.disablecsrf()
