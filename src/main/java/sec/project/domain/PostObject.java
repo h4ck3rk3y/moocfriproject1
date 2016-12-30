@@ -23,7 +23,7 @@ public class PostObject extends AbstractPersistable<Long> {
         return title;
     }
 
-    public void getTitle(String title) {
+    public void setTitle(String title) {
         this.title= title;
     }
 
@@ -37,7 +37,7 @@ public class PostObject extends AbstractPersistable<Long> {
 
     public boolean getIsPublic() {return isPublic;}
 
-    public setIsPublic(boolean isPublic) { this.isPublic = isPublic;}
+    public void setIsPublic(boolean isPublic) { this.isPublic = isPublic;}
 
     public Account getAccount() {
         return account;

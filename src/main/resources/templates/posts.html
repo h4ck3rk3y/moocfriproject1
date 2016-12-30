@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Posts</title>
+    </head>
+    <body>
+
+        <h2>Posts!</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th><th>Content</th><th>postedBy</th><th>Public</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${posts.empty}">
+                    <td colspan="4">No Posts</td>
+                </tr>
+                <tr th:each="post: ${posts}">
+                    <td th:utext="${post.title}">title</td>
+                    <td th:utext="${post.content}">content</td>
+                    <td th:text="${post.postedBy}">posted by</td>
+                    <td th:text="${post.isPublic}">false</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form method="POST" action="/posts">
+            <input type="text" name="title" placeholder="title"/>
+            <input type="text" name="content" placeholder="content"/>
+            <input type="text" name="postedBy" hidden="true" value=""/>
+            Public<input type="checkbox" name="isPublic"/>
+            <input type="submit" value="Add!"/>
+        </form>
+
+
+
+        <div th:if="${user!= null}">
+            <a th:href="@{|~/${user}/posts/|}" class="text-left">Your Posts</a>
+        </div>
+
+
+
+    </body>
+</html>

@@ -27,36 +27,40 @@ public class PostController {
     @Autowired
     private AccountRepository accountRepository;
 
-    @RequestMapping(value = "/posts/username/", method = RequestMethod.GET)
+    @RequestMapping(value = "/{username}/posts", method = RequestMethod.GET)
     public String listMy(Authentication authentication, Model model, @PathVariable String username) {
         model.addAttribute("posts", accountRepository.findByUsername(username).getPostObjectList());
         return "posts";
     }
 
-    @RequestMapping(value = "/posts/", method = RequestMethod.GET)
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public String listAll(Authentication authentication, Model model) {
         model.addAttribute("posts", postRepository.findByIsPublic(true));
+        model.addAttribute("user", authentication.getName());
         return "posts";
     }
 
     @RequestMapping(value = "/posts", method = RequestMethod.POST)
-    public String addFile(Authentication authentication, @RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("postedBy") String postedBy) throws IOException {
+    public String addFile(Authentication authentication, @RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("postedBy") String postedBy, @RequestParam(value="isPublic", required=true,defaultValue = "false") boolean isPublic) throws IOException {
         Account account = accountRepository.findByUsername(authentication.getName());
 
+        String by = "";
 
-        PostObject postObject= new postObject();
-        postObject.set
+        if(postedBy == null || postedBy == "")
+        {
+            by = authentication.getName();
+        }
+
+        PostObject postObject= new PostObject();
+        postObject.setTitle(title);
+        postObject.setContent(content);
+        postObject.setPostedBy(by);
         postObject.setAccount(account);
+        postObject.setIsPublic(isPublic);
 
-        fileRepository.save(fileObject);
+        postRepository.save(postObject);
 
 
         return "redirect:/posts";
-    }
-
-    @RequestMapping(value = "/post/{id}", method = RequestMethod.DELETE)
-    public String delete(@PathVariable Long id) {
-        postRepository.delete(id);
-        return "redirect:/post";
     }
 }

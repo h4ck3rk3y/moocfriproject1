@@ -7,7 +7,7 @@ import sec.project.domain.Account;
 
 public interface PostRepository extends JpaRepository<PostObject, Long> {
 
-    List<FileObject> findByAccount(Account account);
-    List<FileObject> findByIsPublic(boolean isPublic);
+    List<PostObject> findByAccount(Account account);
+    List<PostObject> findByIsPublic(boolean isPublic);
 
 }
