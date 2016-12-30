@@ -14,14 +14,14 @@ public class Account extends AbstractPersistable<Long> {
     private String password;
 
     @OneToMany(mappedBy = "account")
-    private List<FileObject> fileObjects;
+    private List<PostObject> postOjbectList;
 
-    public List<FileObject> getFileObjects() {
-        return fileObjects;
+    public List<PostObject> getPostObjectList() {
+        return postOjbectList;
     }
 
-    public void setFileObjects(List<FileObject> fileObjects) {
-        this.fileObjects = fileObjects;
+    public void setPostObectList(List<PostObject> postObjects) {
+        this.postOjbectList= postObjects;
     }
 
     public String getUsername() {

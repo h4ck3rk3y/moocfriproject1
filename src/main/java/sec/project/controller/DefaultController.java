@@ -8,6 +8,6 @@ public class DefaultController {
 
     @RequestMapping("*")
     public String defaultRedirectToFiles() {
-        return "redirect:/files";
+        return "redirect:/posts";
     }
 }
