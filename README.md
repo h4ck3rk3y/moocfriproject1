@@ -77,7 +77,7 @@ The following vulnerabilities exist in the application. I've also listed outways
 Vector-1
 ~~~javascript
 var http = new XMLHttpRequest();
-var url = "http://localhost:8080/post/";
+var url = "http://localhost:8080/post";
 var params = "title=haha&content=lololol&public=1";
 http.open("POST", url, true);
 
