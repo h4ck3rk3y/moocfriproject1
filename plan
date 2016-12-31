@@ -1,7 +1,0 @@
-medical data storing app
-
-xss - public forum -- done
-injection - find ka feature
-logical error - add postedBy -- done
-idor - messages -- done
-security misconfiguration and csrf - http.disablecsrf() -- done
