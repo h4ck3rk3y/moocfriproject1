@@ -25,7 +25,7 @@ The following vulnerabilities exist in the application. I've also listed outways
 - Login with either of the username & password combination
 - Make a new post with the following content
     + title: First Post
-    + content: <script>alert("XSS");</script>
+    + content: `<script>alert("XSS");</script>`
     + public: checked
 - Refresh the page and you will be greeted by an alert window
 
@@ -70,7 +70,7 @@ The following vulnerabilities exist in the application. I've also listed outways
 - Login with either of the username & password combination
 - Make a new post with the following content
     + title: First Post
-    + content: Wrap Vector-1 in <script></script> tags
+    + content: Wrap Vector-1 in `<script></script>` tags
     + public: checked
 - Now whoever visits the /posts page will post something to that page.
 
